@@ -1,0 +1,18 @@
+Resources
+=========
+
+* Lecture Notes
+    ** link:./lecture-notes[PC lecture notes]
+        *** Contents will be updated during the semester.
+    ** link:https://github.com/pmhsfelix/course-concurrency/tree/main[A course on Concurrent Programming]
+        *** Contents will be updated during the semester.
+    ** Each lecture summary will point to the relevant lecture notes.
+    
+* Book - link:https://jcip.net[Java Concurrency In Practice].
+
+* Resources from previous semesters
+    ** Content may not reflect the current course programme.
+    ** link:https://educast.fccn.pt/vod/channels/1ltu5ml481[Lecture recordings, in Portuguese].
+    ** link:https://docs.google.com/presentation/d/e/2PACX-1vQq_qqpJRuEQh9iJOlmwgJcumuRpgOxWLpe_Pz9Ecsz565OA2bl9PitjC-EvyISraPNQGQGmFE4Yr7l/pub?start=false&loop=false&delayms=3000[Drawings].
+    ** link:https://youtube.com/playlist?list=PL8XxoCaL3dBiv-3pHZLbFGYsQiJa9X73o&si=TGKeIIcRJjV25QQG[Lecture recordings by Prof. Paulo Pereira, in Portuguese].
+

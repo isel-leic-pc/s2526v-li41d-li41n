@@ -1,0 +1,20 @@
+name: JVM Continuous Check
+
+on: 
+  push:
+    paths:
+      - code/jvm/**
+
+jobs:
+  build:
+    name: Continuous Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+      - name: Build with Gradle
+        run: ./code/jvm/gradlew -p code/jvm check --info

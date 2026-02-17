@@ -1,0 +1,6 @@
+Documentation
+=============
+
+* link:./course-evaluation.adoc[Course evaluation].
+* link:./calendar.adoc[Course calendar].
+* link:./resources.adoc[Resources].

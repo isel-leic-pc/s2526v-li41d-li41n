@@ -1,0 +1,80 @@
+Course Calendar
+===============
+
+Work assignments calendar (tentative)
+-------------------------------------
+
+* First assignment: published until March 9 (start of week 4) and delivered until March 29 (end of week 6).
+* Second assignment: published until April 13 (start of week 9) and delivered until May 3 (end of week 11).
+* Third assignment: published until May 4 (start of week 12) and delivered until May 24 (end of week 14).
+
+Tentative weekly schedule
+-------------------------
+
+* W1 - 2026-02-16
+    ** No classes on Monday and Tuesday due to the Carnival break.
+    ** Course introduction.
+    ** Introduction to concurrent programming in the JVM platform:
+        *** Motivation.
+        *** Thread creation and basic synchronization.
+        *** Threading hazards.
+
+* W2 - 2026-02-23
+    ** A model for how threads are implemented.
+        *** Multiple CPUs.
+        *** Time-multiplexing of multiple threads.
+    ** The uthreads multi-threading system.
+        *** Context and context switching.
+        *** Thread scheduling and thread states.
+        *** Interaction between I/O, thread states, and scheduling.
+
+* W3 - 2026-03-02
+    ** Data and control synchronization.
+        *** Data synchronization, mutual exclusion and Locks.
+        *** Control synchronizations and non-busy waiting.
+        *** Examples of synchronizers.
+
+* W4 - 2026-03-09
+    ** Monitors and their semantics.
+    ** Using monitors to build custom synchronizers.
+
+* W5 - 2026-03-16
+    ** Using monitors to build custom synchronizers.
+
+* W6 - 2026-03-23
+    ** The Java Memory Model.
+    ** Laboratory classes.
+
+* W7 - 2026-03-30
+    ** No classes on Thursday and Friday due to the Easter break and holiday.
+    ** Kotlin Coroutines.
+
+* W8 - 2026-04-06
+    ** No classes all week due to the Easter break and holiday.
+    ** Kotlin Coroutines.
+
+* W9 - 2026-04-13
+    ** Kotlin Coroutines.
+
+* W10 - 2026-04-20
+    ** Laboratory classes.
+
+
+* W11 - 2026-04-27
+    ** No classes on Friday May 1 due to holiday.
+    ** Laboratory classes.
+
+* W12 - 2026-05-04
+    ** Asynchronous I/O in the JVM platform and its integration with coroutines.
+
+* W13 - 2026-05-11
+    ** Kotlin flows.
+
+* W14 - 2026-05-18
+    ** Lock-free algorithms and data structures.
+
+* W15 - 2026-05-25
+    ** Laboratory classes and project evaluation.
+
+* W16 - 2026-06-01
+    ** Laboratory classes and project evaluation.

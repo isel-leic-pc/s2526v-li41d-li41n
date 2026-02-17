@@ -1,0 +1,17 @@
+Course evaluation
+=================
+
+* Three practical work assignments (projects).
+    ** Groups of 3 elements.
+    ** Mix of small functions and classes with full programs, including tests.
+    ** Requires 8.0 minimum grade on each assignment.
+    ** Requires 9.5 minimum on the assignments grade average.
+    ** Requires final discussion.
+    ** Grade defined after the final discussion.
+    ** 40% of the final grade.
+
+* Written exam.
+    ** Individual.
+    ** Requires 9.5 minimum grade.
+    ** _May_ exist a _validation discussion_.
+    ** 60% of the final grade.
