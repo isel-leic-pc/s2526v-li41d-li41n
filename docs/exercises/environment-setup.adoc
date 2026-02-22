@@ -10,7 +10,7 @@ The goal of these exercises is to ensure the students:
 
 * Running the examples provided during the classes
     ** For each one of the following repositories
-        *** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n[https://github.com/isel-leic-pc/s2425v-li41d-li41n].
+        *** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n[https://github.com/isel-leic-pc/s2526v-li41d-li41n].
         *** link:https://github.com/pmhsfelix/course-concurrency[https://github.com/pmhsfelix/course-concurrency].
     ** Create a local clone of the repositories.
     ** Run `./gradlew check` (or `gradlew check` if on windows) in the `code/jvm` folder. If successful, then your machine probably everything required to run the JVM-based projects.
