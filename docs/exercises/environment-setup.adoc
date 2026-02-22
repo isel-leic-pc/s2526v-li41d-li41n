@@ -17,7 +17,7 @@ The goal of these exercises is to ensure the students:
     ** Create an IntelliJ project using the source code available in the `code/jvm` (use the `build.gradle` file when adding the project).
     ** If the source code has JUnit based tests, run them from inside IntelliJ.
 
-* In the `code/jvm` project present in link:https://github.com/pmhsfelix/course-jvm-concurrency[https://github.com/pmhsfelix/course-concurrency]:
+* In the `code/jvm` project present in link:https://github.com/pmhsfelix/course-concurrency[https://github.com/pmhsfelix/course-concurrency]:
 
     ** For each server application present in the repo:
 

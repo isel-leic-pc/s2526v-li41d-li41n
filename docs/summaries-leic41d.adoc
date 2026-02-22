@@ -1,0 +1,45 @@
+= Summaries - LEIC41D
+
+== Lecture 1 - 2026-02-20
+
+* Course introduction:
+    ** link:./course-evaluation.adoc:[Grading].
+    ** link:./calendar.adoc:[Calendar and syllabus].
+    ** link:./resources.adoc:[Resources].
+    ** link:./tools.adoc[Tools].
+* A motivating example - A TCP/IP echo server
+    ** Starting with a single threaded implementation and evolving to a multi-threaded implementation.
+    ** Relevant types and functions:
+        *** https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/ServerSocket.html:[`ServerSocket`].
+        *** https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/Socket.html:[`Socket`].
+        *** https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/InputStream.html:[`InputStream`].
+        *** https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/OutputStream.html:[`OutputStream`].
+        *** https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.io/buffered-reader.html:[`bufferedReader` function].
+        *** https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.io/buffered-writer.html:[`bufferedWriter` function].
+    ** link:./../code/jvm/src/main/kotlin/pt/isel/pc/leic41d/sketches/apps/echoserver/EchoServer0.kt:[Code developed during the class].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/lecture-notes/a-motivating-example-tcp-server.adoc[Lecture note "A motivating example"].
+    ** link:https://educast.fccn.pt/vod/clips/1grxzke96s/link_box_h:[Video recording on Educast].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/apps/echoserver/EchoServer0SingleThreaded.kt:[Code on `course-concurrency`].
+    ** The code written during the class is here link:../code/jvm/src/main/kotlin/pt/isel/pc/leic41d/sketches/apps/echoserver.
+
+== Lecture 2 - 2026-02-24
+
+Asynchronous lecture.
+    
+* JVM-based development and runtime environment:
+    ** link:./lecture-notes/development-environment-and-practices.adoc:[Development Environment and Practices].
+    ** link:https://educast.fccn.pt/vod/clips/26hz5sam4t/link_box_h[Video recording on Educast].
+    ** link:.docs/exercises/environment-setup.adoc:[Exercises for the introduction to concurrent programming].
+
+* Threading hazards:
+    ** link:https://educast.fccn.pt/vod/clips/1ji5r330kj/link_box_h[Video recording on Educast].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/lecture-notes/threading-data-hazards.adoc[Lecture notes on "Threading data hazards"].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/test/kotlin/org/pedrofelix/concurrency/course/basics/ThreadingHazardsTests.kt[Code on `course-concurrency`].
+
+== Lecture 3 - 2026-02-27
+
+Asynchronous lecture.
+
+* A model for multi-threading:
+    ** link:https://educast.fccn.pt/vod/clips/1f7tjx2dly/link_box_h?locale=pt[Video recording on Educast].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/lecture-notes/platform-threads-introduction.adoc[Lecture note "Platform threads"].
