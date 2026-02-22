@@ -1,9 +1,10 @@
-= Summaries - LEIC41D
+= Summaries - LEIC41N
+:toc: auto
 
 == Lecture 1 - 2026-02-20
 
 * Course introduction:
-    ** link:./course-evaluation.adoc[Grading].
+    ** link:./course-grading.adoc[Grading].
     ** link:./calendar.adoc[Calendar and syllabus].
     ** link:./resources.adoc[Resources].
     ** link:./tools.adoc[Tools].

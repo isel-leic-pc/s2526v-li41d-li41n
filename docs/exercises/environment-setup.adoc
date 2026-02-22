@@ -13,8 +13,8 @@ The goal of these exercises is to ensure the students:
         *** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n[https://github.com/isel-leic-pc/s2526v-li41d-li41n].
         *** link:https://github.com/pmhsfelix/course-concurrency[https://github.com/pmhsfelix/course-concurrency].
     ** Create a local clone of the repositories.
-    ** Run `./gradlew check` (or `gradlew check` if on windows) in the `code/jvm` folder. If successful, then your machine probably everything required to run the JVM-based projects.
-    ** Create an IntelliJ project using the source code available in the `code/jvm` (use the `build.gradle` file when adding the project).
+    ** Run `./gradlew check` (or `gradlew check` if on windows) in the `code/jvm` folder. If successful, then your machine probably has everything required to run the JVM-based projects.
+    ** Create an IntelliJ project using the source code available in the `code/jvm` (use the `build.gradle.kts` file when adding the project).
     ** If the source code has JUnit based tests, run them from inside IntelliJ.
 
 * In the `code/jvm` project present in link:https://github.com/pmhsfelix/course-concurrency[https://github.com/pmhsfelix/course-concurrency]:
