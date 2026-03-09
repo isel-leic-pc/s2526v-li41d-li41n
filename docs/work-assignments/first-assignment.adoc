@@ -1,0 +1,234 @@
+= Concurrent Programming - First Work Assignment
+
+== Introduction
+
+This document contains the requirements for the first work assignment of the Concurrent Programming (_Programação Concorrente_) course.
+The solution to this work assignment must be delivered until the end of 2025-04-12 (end of week 8), via the creation and push of the `0.1.0` Git tag.
+For each requirement:
+
+* Include technical documentation with the solution design, e.g. as a KDoc to the complete class (e.g. link:https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/CoroutineScope.kt#L11-L74[example]).
+* Include automated tests, including both basic functional tests and _stress tests_.
+
+This work assignment should be done in groups of 3 students.
+
+## Requirement 1 - `ThreadSafeNonBlockingQueue<T>` class
+
+Design and implement the `ThreadSafeNonBlockingQueue<T>` class, providing an unbounded thread-safe _first-in-first-out_ (FIFO) queue without blocking retrieval.
+Consider the requirements present in the following code excerpt.
+
+.The `ThreadSafeNonBlockingQueue` class
+[#ThreadSafeNonBlockingQueue,kotlin]   
+----
+/**
+ * Unbounded First-In-First-Out (FIFO) queue without blocking operations and 
+ * a _weakly consistent_ iterator.
+ */
+class ThreadSafeNonBlockingQueue<T> : Iterable<T> {
+    /**
+     * Adds an element to the _end_ of the queue.
+     */
+    fun add(value: T) {
+        TODO("To be implemented")
+    }
+
+    /**
+     * Removes and returns the element in the _front_ of the queue, or returns `null` if the queue is empty.
+     */
+    fun removeOrNull(): T? {
+        TODO("To be implemented")
+    }
+
+    /**
+     * Returns an iterator to the queue.
+     */
+    override fun iterator(): WeaklyConsistentIterator<T> {
+        TODO("To be implemented")
+    }
+
+    /**
+     * Iterator to the queue, starting from the front and moving to the end, providing a _weakly consistent_ behavior,
+     * as described in
+     * [https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html#Weakly](Concurrent Collections):
+     * - Iteration MUST not block other operations in the queue.
+     * - A call to `next` must succeed if it was proceeded by a call to `hasNext`, which returned `true`.
+     * - MAY return an element that was already removed when the `next` method is called.
+     * That is, use of the iterator in a `for` statement will never result in an exception.
+     * It is assumed that an iterator instance will not be called concurrently from multiple-threads.
+     */
+    class WeaklyConsistentIterator<T> : Iterator<T> {
+        /**
+         * Returns `true` if there are still more elements to iterate, `false` otherwise.
+         */
+        override fun hasNext(): Boolean {
+            TODO("To be implemented")
+        }
+
+        /**
+         * Returns the next element on the iteration.
+         * - MUST return an element if the call was preceded with an `hasNext` call that returned `true`.
+         * - MAY throw `NoSuchElementException` when not preceded with an `hasNext` call that returned `true`.
+         * - MUST not throw `ConcurrentModificationException`.
+         */
+        override fun next(): T {
+            TODO("To be implemented")
+        }
+    }
+}
+----
+
+## Requirement 2 - `BoundedEventTopic<T>` class
+
+Design and implement the `BoundedEventTopic` class, providing a bounded event topic.
+Consider the requirements present in the following code excerpt.
+
+.The `BoundedEventTopic` class
+[#BoundedEventTopic,kotlin]   
+----
+
+/**
+ * An _event topic_ to where:
+ * - Producing parties can publish events.
+ * - Consuming parties can register subscribers. Each subscriber should receive the events published to the topic.
+ */
+class BoundedEventTopic<T>(
+    capacity: Int,
+) : Closeable {
+
+    /**
+     * Publishes an event to the topic. If capacity is exceeded, then the oldest event is discarded.
+     */
+    fun publish(event: T): PublishResult {
+        TODO("To be implemented")
+    }
+
+    /**
+     * The result of a `publish` call.
+     */
+    sealed interface PublishResult {
+        // Publish was done successfully
+        data object Success : PublishResult
+
+        // Publish cannot be done because the topic is closed
+        data object Closed : PublishResult
+    }
+
+    /**
+     * Subscribes to the topic, returning a `Subscription`, or `null` if the topic is closed.
+     */
+    fun subscribe(): Subscription<T>? {
+        TODO("To be implemented")
+    }
+
+    /**
+     * Closes the topic.
+     * When a topic is closed, then any `publish` or `read` on a subscription will fail.
+     */
+    override fun close() {
+        TODO("To be implemented")
+    }
+
+    /**
+     * Represents a subscription to the topic.
+     */
+    interface Subscription<T> : Closeable {
+        /**
+         * Reads the next event from the topic, in the context of the current subscription.
+         * MUST support timeout.
+         * MUST implement the JVM interrupt protocol.
+         */
+        @Throws(InterruptedException::class)
+        fun read(timeout: Duration): ReadResult<T> {
+            TODO("To be implemented")
+        }
+
+        /**
+         * Represents the result of a read on a subscription.
+         */
+        sealed interface ReadResult<T> {
+            /**
+             * Read cannot be done because topic is closed.
+             */
+            data object Closed : ReadResult<Nothing>
+
+            /**
+             * Read was not done because the timeout was exceeded.
+             */
+            data object Timeout : ReadResult<Nothing>
+
+            /**
+             * Read was done successfully and the event was returned.
+             */
+            data class Success<T>(
+                // The read event
+                val event: T,
+                // Index for the read event
+                val startIndex: Long,
+            ) : ReadResult<T>
+        }
+    }
+}
+----
+
+## Requirement 3 - `BoundedThreadScope` class.
+
+Implement the `BoundedThreadScope` class, responsible for holding a set of related threads and child scopes.
+Each `BoundedThreadScope` instance is constructed with a _name_ (of type `String`), a _thread builder_ (of type `Thread.Builder`), and the maximum number of alive threads (threads that already started and didn't yet completed). 
+This class supports the following operations:
+
+    ** `newThread` - creates and conditionally starts a new thread managed by the scope, given a `Runnable`. If the number of alive threads is already at the maximum, the thread will be immediately created but it will only be started when the number of alive threads is below the maximum.
+    ** `newChildScope` - creates a new child thread scope, given a name.
+    ** `close` - closes the scope, disallowing the creation of any further thread or child scope. The `close` operation is idempotent.
+    ** `cancel` -  interrupts all threads in the scope and cancels all child scopes. A `cancel` operation performs an implicit close.
+    ** `join` - waits for a scope to be completed, which is defined by all started threads being terminated and all child scopes being completed.
+
+.The `ThreadScope` class
+[#ThreadScope,kotlin]   
+----
+class ThreadScope(...) : Closeable {
+
+    // Creates and conditionally starts a new thread in the scope, if the scope is not closed.
+    fun newThread(runnable: Runnable): Thread? {...}
+
+    // Creates a new child scope, if the current scope is not closed.
+    fun newChildScope(name: String): ThreadScope? {...}
+
+    // Closes the current scope, disallowing the creation of any further thread
+    // or child scope.
+    override fun close() {...}
+    
+    // Waits until all threads and child scopes have completed
+    @Throws(InterruptedException::class)
+    fun join(timeout: Duration): Boolean {...}
+
+    // Interrupts all threads in the scope and cancels all child scopes.
+    fun cancel() {...}
+}
+----
+
+## Requirement 4 - Broadcast TCP server
+
+Implement a TCP server, based on the examples provided in the lectures, where a line sent via a connection is broadcasted to all other active connections.
+Use the `BoundedEventTopic<T>` class to hold the last N lines and to support the communication between connections.
+
+Each connection should use two threads: a _reader_ thread that reads from the socket and writes into a shared `BoundedEventTopic<T>`; a _writer_ thread that reads from the shared `BoundedEventTopic<T>` and writes into the socket.
+Use the `ThreadScope` to help correctly manage the created threads, namely to ensure:
+
+* When a connection is closed, both associated threads are terminated.
+* When a server is closed, all associated threads are terminated. Namely, when waiting for a server to terminate, this wait should consider all threads created in the context of that server.
+
+The number of simultaneously accepted and handled connections should be bounded:
+- A first bound limits the number of accepted connections at any moment.
+- A second lower bound limits the number of connections that are being handled at any moment.
+This means that a connection may be accepted but not immediately handled.
+Two distinct messages should be sent to the connection by the server:
+
+* One message when the connection is accepted.
+* Another message when the connections starts to be handled, i.e., lines received and transmitted through the connection.
+
+This TCP server should also support the following additional functionality:
+
+* Use JVM's _shutdown hooks_ to correctly terminate a server.
+* Support listening for incoming connections in more than one port.
+* Send a farewell message to to each active connection when the server is shuting down.
+* Print a message into _standard output_ when all created threads are completed.
+* Each connection should have an unique identifier, based on a monotonically increasing integer. This unique identifier should be present in the welcoming messages. This unique identifier should also be used to identify all messages (i.e. lines) communicated through the server.
