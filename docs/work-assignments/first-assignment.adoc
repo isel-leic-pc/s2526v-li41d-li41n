@@ -137,14 +137,12 @@ class BoundedEventTopic<T>(
          * MUST implement the JVM interrupt protocol.
          */
         @Throws(InterruptedException::class)
-        fun read(timeout: Duration): ReadResult<T> {
-            TODO("To be implemented")
-        }
+        fun read(timeout: Duration): ReadResult<T>
 
         /**
          * Represents the result of a read on a subscription.
          */
-        sealed interface ReadResult<T> {
+        sealed interface ReadResult<out T> {
             /**
              * Read cannot be done because topic is closed.
              */
