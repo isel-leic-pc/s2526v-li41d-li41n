@@ -1,0 +1,48 @@
+= Thread safe histogram computation
+
+Consider the `Histogram` class.
+
+.The `Histogram` class
+[#Histogram,kotlin]   
+----
+/**
+ * Incrementally computes a histogram, i.e, incrementally counts the frequency of values.
+ */
+class Histogram<T> {
+
+    /**
+     * Adds a value to the histogram computation.
+     * Returns the current count for that value.
+     */
+    fun addValue(value: T): Long {
+        TODO("to implement")
+    }
+
+    /**
+     * Adds a set of values to the histogram computation.
+     */
+    fun addValues(value: Collection<T>) {
+        TODO("to implement")
+    }
+
+    /**
+     * Gets the current count for a given value.
+     */
+    fun getCountForValue(value: T): Long {
+        TODO("to implement")
+    }
+
+    /**
+     * Gets a snapshot of the current histogram computation.
+     */
+    fun getSnapshot(): Map<T, Long> {
+        TODO("to implement")
+    }
+}
+----
+
+* Create a thread-safe implementation using locks (`ReentrantLock`). Do not use any other classes from the `java.util.concurrent` package or sub-packages.
+
+* Create a thread-safe implementation using read-write locks (`ReentrantReadWriteLock`). Do not use any other classes from the `java.util.concurrent` package or sub-packages.
+
+* Create _stress tests_ that checks the behavior of these implementations, when used concurrently by multiple threads.
