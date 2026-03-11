@@ -4,7 +4,7 @@ Course Calendar
 Work assignments calendar (tentative)
 -------------------------------------
 
-* First assignment: published until March 9 (start of week 4) and delivered until ~March 29 (end of week 6)~ April 12 (end of week 8).
+* First assignment: published until March 9 (start of week 4) and delivered until [line-through]#March 29 (end of week 6)# April 12 (end of week 8).
 * Second assignment: published until April 13 (start of week 9) and delivered until May 3 (end of week 11).
 * Third assignment: published until May 4 (start of week 12) and delivered until May 24 (end of week 14).
 
