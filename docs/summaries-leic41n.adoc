@@ -43,3 +43,63 @@ Asynchronous lecture.
 * A model for multi-threading:
     ** link:https://educast.fccn.pt/vod/clips/1f7tjx2dly/link_box_h?locale=pt[Video recording on Educast].
     ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/lecture-notes/platform-threads-introduction.adoc[Lecture note "Platform threads"].
+
+== Lecture 4 - 2026-03-03
+
+* Reviews from the previous week:
+    ** The TCP based multi-threaded echo server.
+    ** Threading hazards.
+* A model for multi-threading:
+    ** Multi-processor systems and shared memory blocks.
+    ** Temporal multiplexing, context switches, and thread scheduling.
+    ** Cooperating and preemptive scheduling
+    ** Thread states - _running_, _ready_, and _not-ready_.
+
+* Resources:
+    ** link:https://educast.fccn.pt/vod/clips/1f7tjx2dly/link_box_h?locale=pt[Video recording on Educast].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/lecture-notes/platform-threads-introduction.adoc[Lecture note "Platform threads"].
+
+== Lecture 5 - 2026-03-06
+
+* Data synchronization, locks, and mutual exclusion.
+* Locks in the JVM platform:
+    * The `Lock` interface and the `ReentrantLock` class.
+    * The concept and utility of _reentrancy_ in lock acquisition.
+
+== Lecture 6 - 2026-03-10
+
+* The concept of _control synchronization_:
+    ** Use-case: limiting the number of connections being handled in the echo server.
+    ** The concept of _synchronizer_ as a classe exposing functions for control synchronization.
+    ** The _semaphore_ synchronizer and its semantics.
+    ** Using the semaphore synchronizer to solve the previous use-case.
+
+* Creating custom synchronizers using the _monitor_ building block:
+    ** Locks and conditions.
+
+* Creating a semaphore synchronizer using monitors:
+    ** Structure of the `acquire` operation and the need to reevaluate the exit condition due to _barging_ and _spurious wake-ups_.
+    ** The concept of _fairness_.
+
+* Resources:
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/docs/exercises/1-data-synchronization-histogram.adoc[Exercise - thread safe histogram computation].
+    ** link:https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html[The `Semaphore` class in the JVM platform].
+
+== Lecture 7 - 2026-03-13
+
+* Creating a semaphore synchronizer with fairness using monitors:
+    ** Maintaining the list of acquiring threads.
+    ** The need for broadcast signaling using `signalAll`.
+    ** The need for signaling in the `acquire` operation.
+
+* Redoing the semaphore synchronizer using _selective signaling_ and the _kernel-style_ technique.
+    * Representing awaiting `acquire` calls via request objects.
+    * Delegation of execution from the _acquire_ to the _release_.
+
+* The JVM thread interrupt mechanism.
+    * The thread interrupt status.
+    * Interrupting threads and its consequence on blocking operations.
+    * Redoing the semaphore synchronizer to handle thread interrupts.
+    
+
+* Resolution of an exercise on data synchronization and locking - link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/docs/exercises/1-data-synchronization-histogram.adoc[Thread safe histogram computation].

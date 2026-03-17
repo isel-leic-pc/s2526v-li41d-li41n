@@ -32,8 +32,9 @@ class EchoServer2 {
             logger.info("Accepting connection...")
             val socket: Socket = serverSocket.accept()
             logger.info("Connection accepted: {}", socket.remoteSocketAddress)
+            val connectionId = nextClientId++
             Thread.ofPlatform().start {
-                echoLines(socket, nextClientId++)
+                echoLines(socket, connectionId)
             }
         }
     }
@@ -46,6 +47,7 @@ class EchoServer2 {
             val reader = socket.getInputStream().bufferedReader()
             val writer = socket.getOutputStream().bufferedWriter()
             writer.writeLine("Welcome ${socket.remoteSocketAddress}, you are client no $id")
+            var messageIndex = 0
             while (true) {
                 logger.info("[{}]:Waiting for line...", id)
                 val line: String? = reader.readLine()
@@ -59,7 +61,7 @@ class EchoServer2 {
                     logger.info("[{}]:Connection exiting", id)
                     break
                 }
-                writer.writeLine(":Server says: ${line.uppercase()}")
+                writer.writeLine(":Server says:${messageIndex++}: ${line.uppercase()}")
             }
         }
     }

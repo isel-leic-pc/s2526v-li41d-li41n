@@ -5,6 +5,7 @@ import pt.isel.pc.utils.writeLine
 import java.net.InetSocketAddress
 import java.net.ServerSocket
 import java.net.Socket
+import java.util.concurrent.Semaphore
 
 fun main(args: Array<String>) {
     EchoServer0().run(
@@ -18,6 +19,9 @@ class EchoServer0 {
         private val logger = LoggerFactory.getLogger(EchoServer0::class.java)
     }
 
+    private var messageCounter: Long = 0
+    private val semaphore = Semaphore(2)
+
     fun run(address: InetSocketAddress) {
         val serverSocket = ServerSocket()
         serverSocket.bind(address)
@@ -26,17 +30,30 @@ class EchoServer0 {
     }
 
     private fun acceptClients(serverSocket: ServerSocket) {
+        var nextClientId = 0
         while (true) {
+            semaphore.acquire()
             logger.info("Accepting connection")
             val clientSocket: Socket = serverSocket.accept()
             logger.info("Client connected: {}", clientSocket.remoteSocketAddress)
+            val connectionId = nextClientId
+            nextClientId += 1
             Thread.ofPlatform().start {
-                echoLines(clientSocket)
+                logger.info("Connection thread beginning for {}", connectionId)
+                try {
+                    echoLines(clientSocket, connectionId)
+                } finally {
+                    semaphore.release()
+                }
             }
+            logger.info("Started thread to handle new connection")
         }
     }
 
-    private fun echoLines(clientSocket: Socket) {
+    private fun echoLines(
+        clientSocket: Socket,
+        connectionId: Int,
+    ) {
         clientSocket.use {
             val reader = clientSocket.getInputStream().bufferedReader()
             val writer = clientSocket.getOutputStream().bufferedWriter()
@@ -54,6 +71,7 @@ class EchoServer0 {
                     logger.info("Client exited")
                     break
                 }
+                messageCounter += 1
                 writer.writeLine("server says: ${line.uppercase()}")
             }
         }
