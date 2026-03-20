@@ -6,7 +6,10 @@ import java.util.concurrent.locks.Condition
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 
-class FairSemaphore1(
+/**
+ * N-Ary
+ */
+class FairSemaphore2(
     initialUnits: Int,
 ) {
     private val mutex = ReentrantLock()
@@ -14,6 +17,7 @@ class FairSemaphore1(
     private var units = initialUnits
 
     private class AcquireRequest(
+        val requestedUnits: Int,
         val condition: Condition,
     ) {
         // No request specific data
@@ -21,11 +25,15 @@ class FairSemaphore1(
     }
 
     @Throws(InterruptedException::class)
-    fun tryAcquire(timeout: Duration): Boolean {
+    fun tryAcquire(
+        requestedUnits: Int,
+        timeout: Duration,
+    ): Boolean {
+        require(requestedUnits > 0)
         mutex.withLock {
             // fast-path
-            if (units > 0) {
-                units -= 1
+            if (units >= requestedUnits && acquireRequests.isEmpty()) {
+                units -= requestedUnits
                 return true
             }
             var remainingNanos = timeout.toNanos()
@@ -33,7 +41,10 @@ class FairSemaphore1(
                 return false
             }
             // wait-path
-            val request = AcquireRequest(mutex.newCondition())
+            val request = AcquireRequest(
+                requestedUnits,
+                mutex.newCondition(),
+            )
             acquireRequests.addLast(request)
             while (true) {
                 try {
@@ -45,6 +56,7 @@ class FairSemaphore1(
                     }
                     // giving-up
                     acquireRequests.remove(request)
+                    completeAllPossible()
                     throw ie
                 }
                 if (request.isDone) {
@@ -53,21 +65,32 @@ class FairSemaphore1(
                 if (remainingNanos <= 0) {
                     // giving-up
                     acquireRequests.remove(request)
+                    completeAllPossible()
                     return false
                 }
             }
         }
     }
 
-    fun release() {
+    fun release(releaseUnits: Int) {
+        require(releaseUnits > 0)
         mutex.withLock {
-            if (acquireRequests.isNotEmpty()) {
-                val headRequest = acquireRequests.pollFirst()
-                headRequest.isDone = true
-                headRequest.condition.signal()
-            } else {
-                units += 1
+            units += releaseUnits
+            completeAllPossible()
+        }
+    }
+
+    private fun completeAllPossible() {
+        while (true) {
+            val headRequest = acquireRequests.peekFirst()
+                ?: return
+            if (units < headRequest.requestedUnits) {
+                return
             }
+            acquireRequests.removeFirst()
+            units -= headRequest.requestedUnits
+            headRequest.isDone = true
+            headRequest.condition.signal()
         }
     }
 }
