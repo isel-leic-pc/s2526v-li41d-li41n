@@ -95,4 +95,39 @@ Asynchronous lecture.
 * Creating a semaphore synchronizer using monitors:
     ** Structure of the `acquire` operation and the need to reevaluate the exit condition due to _barging_ and _spurious wake-ups_.
 
+== Lecture 8 - 2026-03-17
 
+* Thread interruption in the JVM.
+    ** The thread's interrupt status.
+    ** Relation between the interrupt status and blocking operations that can throw `InterruptedException`.
+    ** The JVM interruption protocol.
+
+* Creating custom synchronizers using the _monitor_ building block:
+    ** Implementing a semaphore with _acquire fairness_.
+        *** Broadcast signalling and the `signalAll` function.
+        *** Ensuring _Safety_ and _liveness_ properties.
+    ** Implementing an unary semaphore with _specific signalling_ and _kernel-style_.
+        *** Modelling calls as request objects.
+        *** Delegation of execution to the release operation.
+        *** Handling cancellation by interruption.
+        *** Handling cancellation by timeout.
+
+* Resources:
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/UnarySemaphoreWithFairness.kt[`UnarySemaphoreWithFairness`].
+
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/UnarySemaphoreUsingKernelStyle.kt[`UnarySemaphoreUsingKernelStyle`].
+
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/NArySemaphoreWithFairnessUsingKernelStyle.kt[`NArySemaphoreWithFairnessUsingKernelStyle`].
+
+== Lecture 9 - 2026-03-20
+
+* Creating custom synchronizers using the _monitor_ building block:
+    ** Implementing an n-ary semaphore with _specific signalling_ and _kernel-style_.
+        *** Consequences of cancellation.
+
+    ** Implementing a rendezvous message queue using _kernel-style_.
+
+* Resources:
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/NArySemaphoreWithFairnessUsingKernelStyle.kt[`NArySemaphoreWithFairnessUsingKernelStyle`].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/SimpleMessageQueue.kt[`SimpleMessageQueue` - a rendezvous message queue].
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/tree/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41d/sync[Examples done during the lectures].

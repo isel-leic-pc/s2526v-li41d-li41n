@@ -103,3 +103,22 @@ Asynchronous lecture.
     
 
 * Resolution of an exercise on data synchronization and locking - link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/docs/exercises/1-data-synchronization-histogram.adoc[Thread safe histogram computation].
+
+== Lecture 8 - 2026-03-17
+
+* Creating custom synchronizers using the _monitor_ building block and the _kernel-style_ technique:
+    ** Implementing an n-ary semaphore with _specific signalling_ and _kernel-style_.
+        *** Consequences of cancellation.
+
+    ** Implementing a rendezvous message queue using _kernel-style_.
+
+* Resources:
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/UnarySemaphoreWithFairness.kt[`UnarySemaphoreWithFairness`].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/UnarySemaphoreUsingKernelStyle.kt[`UnarySemaphoreUsingKernelStyle`].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/NArySemaphoreWithFairnessUsingKernelStyle.kt[`NArySemaphoreWithFairnessUsingKernelStyle`].
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/SimpleMessageQueue.kt[`SimpleMessageQueue` - a rendezvous message queue].
+     ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/tree/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41n/sync[Examples done during the lectures].
+
+== Lecture 9 - 2026-03-20
+
+* Supporting the development of the first work assignment.
