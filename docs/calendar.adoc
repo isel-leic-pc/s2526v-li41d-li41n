@@ -51,14 +51,12 @@ Tentative weekly schedule
 
 * W8 - 2026-04-06
     ** No classes all week due to the Easter break and holiday.
-    ** Kotlin Coroutines.
 
 * W9 - 2026-04-13
     ** Kotlin Coroutines.
 
 * W10 - 2026-04-20
-    ** Laboratory classes.
-
+    ** Kotlin Coroutines.
 
 * W11 - 2026-04-27
     ** No classes on Friday May 1 due to holiday.
