@@ -10,7 +10,7 @@ class FairSemaphoreUsingKernelStyle(
     initialUnits: Int,
 ) {
     init {
-        require(initialUnits > 0)
+        require(initialUnits >= 0)
     }
 
     class AcquireRequest(
