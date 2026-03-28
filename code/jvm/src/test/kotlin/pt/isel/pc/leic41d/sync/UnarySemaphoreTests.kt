@@ -66,7 +66,6 @@ class UnarySemaphoreTests {
                 val first = capturedExceptions.peek()
                 throw first
             }
-
         }
     }
 

@@ -77,7 +77,6 @@ class SemaphoreTests {
                     assertEquals(1, 0)
                 }
             }
-
         }
     }
 
