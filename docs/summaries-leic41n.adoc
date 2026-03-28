@@ -122,3 +122,26 @@ Asynchronous lecture.
 == Lecture 9 - 2026-03-20
 
 * Supporting the development of the first work assignment.
+
+== Lecture 10 - 2026-03-24
+
+* Thread pools
+    ** Reusing threads to reduce cost associated to thread creation.
+    ** Limiting the number of threads.
+    ** Policies for thread management.
+    ** Implementation techniques.
+
+* Resources
+    ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/VerySimpleThreadPool.kt[`VerySimpleThreadPool`].
+
+== Lecture 11 - 2026-03-27
+
+* Testing synchronizers:
+    ** Simple tests.
+    ** Tests with more than one thread and the need to capture exceptions on test created threads.
+    ** Stress tests.
+
+* Supporting the development of the first work assignment.
+
+* Resources:
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/commit/35f29351ad6db9fa320e5ffdbba580c9d0337e69[Lecture examples].

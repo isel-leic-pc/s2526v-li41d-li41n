@@ -131,3 +131,17 @@ Asynchronous lecture.
     ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/NArySemaphoreWithFairnessUsingKernelStyle.kt[`NArySemaphoreWithFairnessUsingKernelStyle`].
     ** link:https://github.com/pmhsfelix/course-concurrency/blob/main/code/jvm/src/main/kotlin/org/pedrofelix/concurrency/course/sync/SimpleMessageQueue.kt[`SimpleMessageQueue` - a rendezvous message queue].
     ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/tree/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41d/sync[Examples done during the lectures].
+
+== Lecture 10 - 2026-03-24
+
+* Supporting the development of the first work assignment.
+
+== Lecture 11 - 2026-03-27
+
+* Testing synchronizers:
+    ** Simple tests.
+    ** Tests with more than one thread and the need to capture exceptions on test created threads.
+    ** Stress tests.
+
+* Resources:
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/commit/35f29351ad6db9fa320e5ffdbba580c9d0337e69[Lecture examples].
