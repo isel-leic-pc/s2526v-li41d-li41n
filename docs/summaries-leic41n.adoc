@@ -145,3 +145,7 @@ Asynchronous lecture.
 
 * Resources:
     ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/commit/35f29351ad6db9fa320e5ffdbba580c9d0337e69[Lecture examples].
+
+== Lecture 12 - 2026-03-31
+
+* Supporting the development of the first work assignment.
