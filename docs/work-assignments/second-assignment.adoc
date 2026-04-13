@@ -76,7 +76,7 @@ The management of the worker threads by the synchronizer must follow these crite
 
 * The number of worker threads in the pool at any given moment depends on its activity and can vary between `minThreadPoolSize` and `maxThreadPoolSize`.
 
-Threads that want to execute continuations through the thread pool executor call the `execute` method.
+A call to the `execute`` method submits a continuation to be executed by the thread pool executor.
 This method returns immediately, without waiting for the continuation to be executed or even submitted to a worker thread.
 
 Calling the `shutdown` method puts the executor in _shutdown_ mode and returns immediately.
