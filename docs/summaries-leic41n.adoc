@@ -149,3 +149,32 @@ Asynchronous lecture.
 == Lecture 12 - 2026-03-31
 
 * Supporting the development of the first work assignment.
+
+== Lecture 13 - 2026-04-14
+
+* Introduction to Coroutines in Kotlin:
+    ** Time multiplexing multiple coroutines on a smaller set of threads.
+    ** Suspend functions, the `suspendCoroutine` function, and continuations.
+    ** The `Continuation Passing Style` (CPS) and converting from `suspend fun` to `fun`.
+    ** Usage examples.
+    ** Guided exercises - link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/exercises-and-guides/guide-suspend-functions-intro.adoc[An introduction to suspend functions in Kotlin].
+
+* Resources:
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/test/kotlin/pt/isel/pc/leic41n/coroutines/SuspendFunctionTests.kt[`SuspendFunctionTests`].
+    ** Guided exercises - link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/exercises-and-guides/guide-suspend-functions-intro.adoc[An introduction to suspend functions in Kotlin].
+
+== Lecture 14 - 2026-04-17
+
+* Continuing the Introduction to Coroutines in Kotlin:
+    ** Usage examples.
+    ** Guided exercises - link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/exercises-and-guides/guide-suspend-functions-intro.adoc[An introduction to suspend functions in Kotlin].
+
+* Non-blocking and asynchronous I/O.
+    ** Motivation.
+    ** The Java NIO (New I/O) API for sockets: channels, selectors, and selection keys.
+    ** Usage examples: creating a single threaded echo server.
+
+* Resources:
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41n/sketches/apps/echoserver/NonBlockingEchoServer0.kt[`NonBlockingEchoServer0`].
+    ** Guided exercises - link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/exercises-and-guides/guide-suspend-functions-intro.adoc[An introduction to suspend functions in Kotlin].
+
