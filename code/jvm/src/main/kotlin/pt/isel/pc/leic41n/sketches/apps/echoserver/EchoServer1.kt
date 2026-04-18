@@ -42,6 +42,7 @@ class EchoServer1 {
             val reader = socket.getInputStream().bufferedReader()
             val writer = socket.getOutputStream().bufferedWriter()
             writer.writeLine("Welcome ${socket.remoteSocketAddress}")
+            var lineCounter = 0
             while (true) {
                 logger.info("Waiting for line...")
                 val line: String? = reader.readLine()
@@ -54,7 +55,8 @@ class EchoServer1 {
                     writer.writeLine("bye.")
                     break
                 }
-                writer.writeLine("Server says: ${line.uppercase()}")
+                writer.writeLine("Server says $lineCounter: ${line.uppercase()}")
+                lineCounter += 1
             }
         }
     }
