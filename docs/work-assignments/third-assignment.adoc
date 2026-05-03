@@ -1,0 +1,37 @@
+= Concurrent Programming - Third Work Assignment
+
+== Introduction
+
+This document contains the requirements for the third and last work assignment of the Concurrent Programming (_Programação Concorrente_) course.
+The solution to this work assignment must be delivered until the end of 2026-05-31, via the creation (and push) of the `1.0.0` Git tag.
+For each requirement:
+
+* Include technical documentation with the solution design, e.g. as a KDoc to the complete class (e.g. link:https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/CoroutineScope.kt#L11-L74[example]).
+* Include automated tests, including both basic functional tests and _stress tests_ (when applicable).
+
+This work assignment should be done in groups of 3 students.
+
+== Requirement 1 - `BoundedEventTopic<T>` class with suspend interface.
+
+Implement a version of the `BoundedEventTopic<T>` class, as introduced in the first assignment, in which both `publish` and `read` functions are `suspend`.
+These functions must not block the calling thread while waiting for their respective operations to complete.
+If needed, other functions may also be made `suspend` as well.
+
+== Requirement 2 (optional) - `BoundedEventTopic<T>` with a flow interface.
+
+Create the following extension function, to access the items of a `BoundedEventTopic` as a Kotlin flow.
+
+.The `asFlow` function
+[#asFlow,kotlin]
+----
+fun <T> BoundedEventTopic<T>.asFlow(): Flow<Pair<Long, T>>
+----
+
+Each item in the flow is a pair containing an item in the bounded event topic and its index.
+Each collect of a flow returned by this function should start with the oldest element present in the bounded topic when the collect was initiated.
+
+== Requirement 3 - Broadcast TCP server
+
+Implement a version of the broadcast TCP server, presented in the first work assignment, using coroutines instead of threads whenever possible.
+Namely, the implementation should use a constant number of threads, independent of the number of listening ports or established connections.
+The socket operations should either use _non-blocking selectable socket channels_ or _asynchronous socket channels_, available in the Java Standard library (`java.nio.channels` package).
