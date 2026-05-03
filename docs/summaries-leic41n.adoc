@@ -178,3 +178,31 @@ Asynchronous lecture.
     ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41n/sketches/apps/echoserver/NonBlockingEchoServer0.kt[`NonBlockingEchoServer0`].
     ** Guided exercises - link:https://github.com/pmhsfelix/course-concurrency/blob/main/docs/exercises-and-guides/guide-suspend-functions-intro.adoc[An introduction to suspend functions in Kotlin].
 
+== Lecture 15 - 2026-04-21
+
+Asynchronous lecture.
+
+* The Kotlin coroutine model defined by the `kotlinx.coroutines` library:
+    ** Coroutine builder functions (e.g. `launch`).
+    ** Coroutine scope builder functions (e.g. `runBlocking` and `coroutineScope`).
+    ** Structured concurrency.
+    ** Coroutine dispatchers.
+    ** The `Job` interface and associated state machine.
+
+* Resources:
+    ** link:https://educast.fccn.pt/vod/clips/dsvqe70k4/streaming.html[Video recording].
+    ** link:https://github.com/pmhsfelix/course-concurrency/tree/main/code/jvm/src/test/kotlin/org/pedrofelix/concurrency/course/coroutinesx[Code examples].
+
+== Lecture 16 - 2026-04-24
+
+* The Kotlin coroutine model defined by the `kotlinx.coroutines` library (continuation):
+    ** Revisions from the previous lecture.
+    ** The `Job` interface and associated state machine.
+    ** Coroutine cancellation, coroutine errors, and their consequences based on the parent-child relation between coroutines.
+
+* Resources:
+    ** link:https://github.com/pmhsfelix/course-concurrency/tree/main/code/jvm/src/test/kotlin/org/pedrofelix/concurrency/course/coroutinesx[Code examples].
+
+== Lecture 17 - 2026-04-28
+
+* Supporting the development of the first work assignment.
