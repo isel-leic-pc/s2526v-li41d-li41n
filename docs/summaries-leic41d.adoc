@@ -209,4 +209,60 @@ Asynchronous lecture.
 
 == Lecture 17 - 2026-04-28
 
-* Supporting the development of the first work assignment.
+* Supporting the development of the second work assignment.
+
+== Lecture 18 - 2026-05-05
+
+* Coroutine cancellation and the `suspendSuspendableCoroutine` function.
+    * Race between continuation calling and coroutine cancellation.
+    * The "prompt-cancellation" guaranty provided by the `kotlinx.coroutine` suspend functions.
+
+* Control synchronization between coroutines.
+    ** Waiting with coroutine suspension and without thread blocking.
+    ** Using `suspendCoroutine` with the "kernel-style" design technique.
+    ** Example: an unary semaphore.
+
+* Resources:
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/tree/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41d/ksync[`ksync` package].
+
+== Lecture 19 - 2026-05-08
+
+* Continuing the study of control synchronization between coroutines.
+    ** Supporting cancellation. 
+    ** Example: an unary semaphore using suspendable mutexes and supporting cancellation.
+
+* Resources.
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/tree/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41d/ksync[`ksync` package].
+
+== Lecture 20 - 2026-05-12
+
+* Java NIO 2 and asynchronous channels.
+    ** Distinction between synchronous and asynchronous interfaces to I/O operations.
+    ** The asynchronous socket channels and the `CompletionHandler` interface.
+    ** Application example: a TCP/IP echo server using asynchronous socket channels.
+
+* Introduction to Kotlin's flows.
+    ** Representation of sequences via the `List` and `Sequence` types.
+    ** "Eager" vs "Lazy" representations and transformations.
+    ** Kotlin's flows as a way to represent sequences with "lazy" and suspendable creation, transformation, and consumption.
+    ** The `Flow` and `FlowCollectior` interfaces.
+    ** Creating, transforming and consuming Flows.
+
+* Resources
+    ** https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/test/kotlin/pt/isel/pc/leic41d/flows/FlowIntroTests.kt[`FlowIntroTests.kt].
+    ** https://kotlinlang.org/docs/flow.html[Asynchronous Flows].
+    ** link:https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/main/kotlin/pt/isel/pc/leic41d/sketches/apps/echoserver/AsynchronousEchoServer.kt[Echo server using asynchronous channels].
+
+== Lecture 21 - 2026-05-15
+
+* Continuing the presentation of Kotlin Flows.
+    ** The `Flow` and `FlowCollector` interfaces and the "push-style" operation.
+    ** Intermediate operators: `map`, `filter`, and `transform`.
+    ** Mapping between suspend functions on a flow "pipeline" and the coroutines where they run.
+    ** The `buffer` intermediate operator.
+        *** Coroutine creation for execution of the pipeline before the `buffer` operator.
+        *** Use of channels for inter-coroutine communication.
+
+* Resources
+    ** https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/test/kotlin/pt/isel/pc/leic41d/flows/FlowIntroTests.kt[`FlowIntroTests.kt].
+    ** https://kotlinlang.org/docs/flow.html[Asynchronous Flows].
