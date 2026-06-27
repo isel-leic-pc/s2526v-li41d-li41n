@@ -265,3 +265,39 @@ Asynchronous lecture.
 * Resources
     ** https://github.com/isel-leic-pc/s2526v-li41d-li41n/blob/main/code/jvm/src/test/kotlin/pt/isel/pc/leic41n/flows/FlowIntroTests.kt[`FlowIntroTests.kt].
     ** https://kotlinlang.org/docs/flow.html[Asynchronous Flows].
+
+== Lecture 22 - 2026-05-19
+
+* The Java Memory Model (JMM).
+    ** What is a memory model and why one is needed to reason about concurrent programs.
+    ** Analysis of an example with two threads: one creating and publishing an object and another one using that object.
+    ** Sequential Consistency and the fact that JMM does not ensure it.
+    ** The _happens-before_ relation, what ts ensures, and the rules to infer it.
+    ** _Synchronized_ variables and _synchronized_ memory actions. 
+* Resources:
+    ** link:https://jcip.net[Java Concurrency in Practice], chapter 16.
+
+== Lecture 23 - 2026-05-22
+
+* Continuation of the study of the Java Memory Model (JMM).
+    ** Additional rules for the _happens-before_ relation, namely the _thread creation_ rule, the _thread join_ rule, and the _monitor rule_.
+    ** _happens-before_ ensured by synchronizers.
+    ** The guarantees provided by final fields.
+* Resources:
+    ** link:https://jcip.net[Java Concurrency in Practice], chapter 16.
+
+== Lecture 24 - 2026-05-26
+
+* Supporting the development of the second work assignment.
+
+== Lecture 25 - 2026-05-29
+
+* Supporting the development of the second work assignment.
+
+== Lecture 26 - 2026-06-02
+
+* Work assignment evaluation
+
+== Lecture 27 - 2026-06-05
+
+* Work assignment evaluation
