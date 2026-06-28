@@ -289,11 +289,11 @@ Asynchronous lecture.
 
 == Lecture 24 - 2026-05-26
 
-* Supporting the development of the second work assignment.
+* Supporting the development of the third work assignment.
 
 == Lecture 25 - 2026-05-29
 
-* Supporting the development of the second work assignment.
+* Supporting the development of the third work assignment.
 
 == Lecture 26 - 2026-06-02
 
